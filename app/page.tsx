@@ -12,6 +12,8 @@ import {
   MapPin,
   Phone,
   Clock,
+  Menu,
+  X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -30,6 +32,7 @@ const images = [
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -88,7 +91,9 @@ export default function HomePage() {
           >
             Marci Metzger Homes
           </Link>
-          <div className="flex gap-4">
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex gap-4">
             <Link
               href="/"
               className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
@@ -99,6 +104,50 @@ export default function HomePage() {
               Listings
             </button>
             <button className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+              About Us
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-sm hover:bg-gray-100 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-gray-900" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-900" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-100 transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen
+              ? "max-h-64 opacity-100 transform translate-y-0"
+              : "max-h-0 opacity-0 transform -translate-y-2 overflow-hidden"
+          }`}
+        >
+          <div className="px-6 py-4 space-y-2">
+            <Link
+              href="/"
+              className="block w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-sm transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <button
+              className="block w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-sm transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Listings
+            </button>
+            <button
+              className="block w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-sm transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               About Us
             </button>
           </div>
