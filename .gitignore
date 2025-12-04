@@ -11,6 +11,15 @@ dist
 dist-ssr
 *.local
 
+# Next.js
+.next/
+out/
+
+# Testing
+coverage/
+.nyc_output
+
+# Misc
 .vscode/*
 !.vscode/extensions.json
 .idea
