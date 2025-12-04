@@ -429,7 +429,7 @@ export default function HomePage() {
               Get in Touch
             </h2>
             <p className="text-xl text-gray-600 font-light">
-              We're here to help you find your perfect home
+              We&apos;re here to help you find your perfect home
             </p>
           </div>
 
